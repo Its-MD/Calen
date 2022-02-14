@@ -27,7 +27,7 @@ function getDateName(){
 getDateName();
 setInterval(getDateName, 86400);
 
-let nameOfMonth = new Date().toLocaleString('default', { month: 'long' });
+let nameOfMonth = new Date().toLocaleString('en-US', { month: 'long' });
 let dayOfWeek = new Date(`${nameOfMonth}${1}, 2022 23:15:00`).getDay();
 for (i=0; i<dayOfWeek; i++){
     calenGrid.appendChild(document.createElement("div"));
