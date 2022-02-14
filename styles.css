@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
+.body{
+    --main_bg:#353535;
+    --font_color: white;
+    --card_bg: #272727;
+    --card_bg_trans: #272727AD;
+    --accent: linear-gradient(180deg, #FE1F97 0%, #EFA638 100%);
+    --calendar_item: #646464;
+    --weather_card: #272727B2;
+    --outline-color: #EFA638;
+    --ellipse: url("Ellipse 2.svg") center/100% no-repeat; 
+    --ellipse_ring: url("Ellipse 3.svg") center/100% no-repeat;
+}
+.themeChanger:checked ~ .body{
+    --main_bg: #E2E2E2;
+    --font_color: #272727;
+    --card_bg: #FFF9F9;
+    --card_bg_trans: #FFF9F9AD;
+    --accent: linear-gradient(180deg, #1FBBFE 0%, #60D080 100%);
+    --calendar_item: #F0F0F0;
+    --weather_card: #FFFFFFB2;
+    --outline-color: #60D080;
+    --ellipse: url("Ellipse 3light.svg") center/100% no-repeat; 
+    --ellipse_ring: url("Ellipse 2light.svg") center/100% no-repeat;
+}
+*{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.themeChanger{
+    position: fixed;
+    visibility: hidden;
+}
+.body{
+    background: var(--main_bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.app {
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+}
+.headers {
+    color: var(--font_color);
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 20px;
+}
+.headers h1{
+    width: 70%;
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+.headers h1:nth-of-type(2){
+    width: 30%;
+}
+.app-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 120px);
+    gap: 20px;
+    grid-template-areas:
+    "c c c c w w"
+    "c c c c w w"
+    "c c c c w w"
+    "c c c c . ."
+    "c c c c t t"
+    ;
+    position: relative;
+
+}
+.app-body div{
+    background: var(--card_bg);
+}
+.calendar {
+    grid-area: c;
+    padding: 10px;
+    border-radius: 12px;
+}
+.calenGrid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(7, 1fr);
+    /* grid-template-rows: repeat(5, fit-content); */
+    gap: 10px;
+}
+.hoverContainer{
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.7s ease-out;
+}
+.dayContainer {
+    position: relative;
+    color: var(--font_color);
+    perspective: 1000px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.dayContainer:hover .hoverContainer{
+    transform: rotateY(180deg);
+}
+.front {
+    background: var(--calendar_item) !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7px;
+}
+.back {
+    background: var(--accent) !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dayNum {
+}
+.frontMonth {
+    background: inherit !important;
+    display: flex;
+    border-radius: 12px;
+    justify-content: space-around;
+}
+.frontMonthname {
+}
+.fa-umbrella {
+}
+.dayOfWeek {
+}
+.weather {
+    grid-area: w;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    background: var(--card_bg_trans) !important;
+    position: relative;
+    z-index: 3;
+    backdrop-filter: blur(5px);
+}
+.app-body::before{
+    content: "";
+    background: var(--ellipse);
+    width: 370px;
+    height: 370px;
+    position: absolute;
+    z-index: 1;
+    transform: translate(50%, -50%);
+    right:0;
+    bottom: 0;
+}
+.app-body::after{
+    content: "";
+    background: var(--ellipse_ring);
+    width: 230px;
+    height: 230px;
+    position: absolute;
+    z-index: 1;
+    transform: translate(100%, -50%);
+    right:0;
+    bottom: 0;
+}
+.degContainer{
+    display: flex;
+    width: fit-content;
+    margin-top: 40px;
+    align-items: center;
+    background: none !important;
+}
+.degNum {
+    font-size: 100px;
+    background: var(--accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.degText {
+    color: var(--font_color);
+    font-size: 30px;
+    margin-left: 20px;
+}
+.snowflakeBg{
+    background: var(--accent) !important;
+    padding: 5px;
+    width: fit-content;
+    display: flex;
+    border-radius: 100px;
+}
+.snowflakeBg img {
+    width: 80px;
+}
+.theme {
+    grid-area: t;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 12px;
+    background: var(--card_bg_trans) !important;
+}
+.themeSwitch{
+    background: var(--main_bg);
+    border-radius: 20px;
+    width: 70px;
+    height: 37px;
+    display: block;
+}
+.themeSwitch::before{
+    content: "";
+    height: 37px;
+    width: 37px;
+    border-radius: 20px;
+    background: var(--accent);
+    display: block;
+    transition: 0.3s;
+}
+.themeChanger:checked ~ .body .app .app-body .theme .themeSwitch::before{
+    transform: translateX(33px); 
+}
+.themeText{
+color: var(--font_color);
+font-size: 25px;
+}

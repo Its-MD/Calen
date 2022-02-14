@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6d4d1a8473.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input type="checkbox" class="themeChanger" id="themeChanger">
+    <div class="body">
+        <section class="app">
+            <div class="headers">
+                <h1 class="dateName"> <i class="fas fa-calendar-alt"></i> d</h1>
+                <h1>Today's weather</h1>
+            </div>
+            <!-- Body -->
+            <div class="app-body">
+                <div class="calendar">
+                    <div class="calenGrid">
+                    </div>
+                </div>
+                <div class="weather">
+                    <p class="degNum">-10</p>
+                    <div class="degContainer">
+                        <div class="snowflakeBg"></div>
+                        <p class="degText">snow</p>
+                    </div>
+                </div>
+                <div class="theme">
+                    <label for="themeChanger" class="themeSwitch"></label>
+                    <p class="themeText">Change Theme</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
