@@ -55,7 +55,7 @@ for(let i=1; i<= dayCounts; i++){
 
 function fillDayName(i){
     let monthData = new Date();
-    let nameOfMonth = monthData.toLocaleString('default', { month: 'long' });
+    let nameOfMonth = monthData.toLocaleString('en-US', { month: 'long' });
     let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let dayOfWeek = new Date(`${nameOfMonth}${i}, 2022 23:15:00`).getDay();
     let WeekDay = week[dayOfWeek];
