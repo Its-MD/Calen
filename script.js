@@ -19,7 +19,7 @@ fetch (url)
     snowflakeBg.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
 });
 function getDateName(){
-    let date = new Date().toLocaleDateString(undefined, { month: 'long'});
+    let date = new Date().toLocaleDateString("en-US", { month: 'long'});
     dateName.innerHTML = `<i class="fas fa-calendar-alt"></i> ${date}`;
     return date;
 }
